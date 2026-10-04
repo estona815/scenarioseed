@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17272e">
+  <title>ScenarioSeed — Synthetic API test cases</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Presets">
+      <div class="brand">ScenarioSeed</div>
+      <div class="preset-label">Example contracts</div>
+      <button class="preset active" data-preset="order" type="button">Order API</button>
+      <button class="preset" data-preset="inventory" type="button">Inventory API</button>
+      <p class="sidebar-note">Synthetic fixtures only.<br>No account or network needed.</p>
+    </aside>
+    <main class="workspace">
+      <header class="page-header">
+        <div>
+          <h1>Build better test cases</h1>
+          <p>Generate synthetic API request fixtures and boundary cases from a JSON contract.</p>
+        </div>
+        <span class="local-note">Runs in your browser</span>
+      </header>
+
+      <div class="workbench">
+        <section class="panel editor-panel" aria-labelledby="contract-title">
+          <div class="panel-head"><h2 id="contract-title">API contract (JSON)</h2><button id="reset" class="text-button" type="button">Reset preset</button></div>
+          <p class="panel-help">Edit a supported JSON Schema. Generate passing and failing fixtures for required fields, types, lengths, ranges, choices, and array size.</p>
+          <label for="schema" class="sr-only">JSON Schema editor</label>
+          <textarea id="schema" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div class="editor-footer"><span id="edit-status" role="status">Ready to generate</span><button id="generate" class="primary" type="button">Generate cases <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <div class="results-column">
+          <section class="panel results-panel" aria-labelledby="cases-title">
+            <div class="panel-head results-head"><h2 id="cases-title">Generated test cases</h2><div class="counts"><strong id="total-count">0 cases</strong><span id="pass-count" class="pass-count">0 passing</span><span id="fail-count" class="fail-count">0 failing</span></div></div>
+            <div class="table-scroll"><table><thead><tr><th scope="col">#</th><th scope="col">Case name</th><th scope="col">Expectation</th><th scope="col">Field / rule</th></tr></thead><tbody id="cases"></tbody></table></div>
+          </section>
+          <section class="panel details-panel" aria-labelledby="detail-title">
+            <div class="panel-head"><h2 id="detail-title">Case details</h2><span id="case-position" class="case-position">Select a case</span></div>
+            <div class="detail-meta"><div><span class="meta-label">Case name</span><strong id="detail-name">—</strong></div><div><span class="meta-label">Expectation</span><strong id="detail-expect">—</strong></div><div><span class="meta-label">Field / rule</span><strong id="detail-rule">—</strong></div></div>
+            <div class="detail-content"><div><div class="subhead"><h3>Request payload (JSON)</h3><button id="copy" class="text-button" type="button">Copy</button></div><pre id="payload">Choose a generated case to inspect its payload.</pre></div><div><h3>Validation rationale</h3><div id="rationale" class="rationale">Cases are checked against the same contract used to generate them.</div></div></div>
+          </section>
+        </div>
+      </div>
+      <footer class="footer"><span id="footer-summary">No cases generated yet</span><div class="downloads"><button id="download-json" class="secondary" type="button" disabled>Download JSON</button><button id="download-csv" class="primary" type="button" disabled>Download CSV</button></div></footer>
+      <p class="footnote">Local prototype · Supported JSON Schema subset only · Generated data is synthetic and should be reviewed before use.</p>
+    </main>
+  </div>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
